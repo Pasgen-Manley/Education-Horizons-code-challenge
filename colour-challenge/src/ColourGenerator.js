@@ -75,8 +75,8 @@ const ColourGenerator = () => {
   return (
     rgbColours.map((colour, index) => {
       return (
-        <div style={{ width: '80%', position: 'relative', margin: "0% 10%" }}>
-          <div key={index} id={index} style={{ backgroundColor: colour }} className="square button-img"></div>
+        <div style={{ width: '100%', position: 'relative'}}>
+          <div key={index} id={index} style={{ backgroundColor: colour }} className="square"></div>
         </div>
       )
     })

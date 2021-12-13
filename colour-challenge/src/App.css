@@ -44,10 +44,8 @@
 }
 
 .square {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   float: left;
-  border-radius: 100%;
-  padding: 0.2px;
-  margin: 0.2px;
+  padding: 0.75px;
 }
