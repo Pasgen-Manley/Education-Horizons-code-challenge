@@ -21,23 +21,23 @@ const ColourGenerator = () => {
     let colourArray = [];
     //Using a while loop that runs through and takes a random integer from red, green and blue and splices them from there.
     // That integer is then used to created the rbg values of a colour
-    let i = 0;
-    while (i < red.length) {
+    let x = 0;
+    while (x < red.length) {
       const redIndex = Math.floor(Math.random() * red.length);
       const redValue = red[redIndex];
       red.splice(redIndex, 0);
-      i++
+      x++
 
-      let j = 0;
-      while (j < blue.length) {
+      let y = 0;
+      while (y < blue.length) {
         const blueIndex = Math.floor(Math.random() * blue.length);
         const blueValue = blue[blueIndex];
         blue.splice(blueIndex, 0);
-        j++
+        y++
 
 
-        var k = 0;
-        while (k < green.length) {
+        var z = 0;
+        while (z < green.length) {
           const greenIndex = Math.floor(Math.random() * green.length);
           const greenValue = green[greenIndex];
           green.splice(greenIndex, 0);
@@ -46,36 +46,43 @@ const ColourGenerator = () => {
           //rbg values are then pushed into the colour array
           colourArray.push(rgb);
 
-          k++
+          z++
         }
       }
     }
-    //Colours array is then shuffled and randomised thanks to the Knuth shuffle algorithm
-    return shuffleFunction(colourArray);
+    //Colours array is then shuffled and randomised thanks to the selection sort algorithm
+    return selectionSort(colourArray);
   };
-  //Fisher-Yates (aka Knuth) Shuffle.
-  function shuffleFunction(array) {
-    let currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
+  function selectionSort(arr) {
+    let min;
   
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+    //start passes.
+    for (let i = 0; i < arr.length; i++) {
+      //index of the smallest element to be the ith element.
+      min = i;
   
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+      //Check through the rest of the array for a lesser element
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[min]) {
+          min = j;
+        }
+      }
+  
+      //compare the indexes
+      if (min !== i) {
+        //swap
+        [arr[i], arr[min]] = [arr[min], arr[i]];
+      }
     }
   
-    return array;
+    return arr;
   }
   //JSX styling
   return (
     rgbColours.map((colour, index) => {
       return (
-        <div style={{ width: '100%', position: 'relative'}}>
+        <div style={{ width: '80%', position: 'relative', margin: '10%'}}>
           <div key={index} id={index} style={{ backgroundColor: colour }} className="square"></div>
         </div>
       )
