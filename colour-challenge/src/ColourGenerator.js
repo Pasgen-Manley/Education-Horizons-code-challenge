@@ -50,7 +50,7 @@ const ColourGenerator = () => {
         }
       }
     }
-    //Colours array is then shuffled and randomised thanks to the selection sort algorithm
+    //Colours array are organised with the selection sort algorithm
     return selectionSort(colourArray);
   };
   
